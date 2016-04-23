@@ -1,0 +1,49 @@
+#HP's .gitconfig
+[user]
+  name = HP Dietz
+  email = hp@jandh.org
+
+[push]
+  default = simple
+
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+  ui = auto
+
+[color "branch"]
+  current = bold
+  local = green
+  remote = yellow
+  upstream = yellow
+
+[color "diff"]
+  meta = bold
+  frag = cyan bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = cyan
+  deleted = red
+  header = normal
+
+[alias]
+  a = add
+  b = branch
+  bd = branch -D
+  branches = branch --all
+  co = checkout
+  cb = checkout -b
+  x = commit -m
+  xa = commit -am
+  f = fetch
+  p = pull
+  ps = push
+  remotes = remote -v show
+  drop = reset --hard
+  s = status
+  sb = status -sb
