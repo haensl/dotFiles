@@ -39,8 +39,8 @@ alias sha1="shasum -a 1"
 # Fix ulimit problem
 ulimit -n 10480
 
-# Source local customizations if available
-LOCAL_BASH_PROFILE=~/.bash_profile.local
-if [ -e "$LOCAL_BASH_PROFILE" ]; then 
-  source $LOCAL_BASH_PROFILE 
+# Include local extensions if available
+LOCAL_EXTENSIONS_FILE=~/.bash_profile.local
+if [ -e "$LOCAL_EXTENSIONS_FILE" ]; then
+  source $LOCAL_EXTENSIONS_FILE
 fi
