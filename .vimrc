@@ -2,6 +2,8 @@
 
 set nocompatible " vim only
 set nomodeline " no modelines
+set encoding=utf-8 " default encoding
+set fileencoding=utf-8 " encode files in utf8
 set t_Co=256 " 256 colors
 set backspace=indent,eol,start " backspace moves accross these
 set nobackup " do not keep a backup file
@@ -18,6 +20,7 @@ set shiftwidth=2 " shift width = 2 spaces
 set softtabstop=2 " number of spaces that 'tab' counts for when editing
 set expandtab " tab inserts spaces
 set autoindent " inherit indents
+set formatoptions=tcqr " autoformatting options: t: autowrap text using textwidth, c: autowrap comments, q: allow formatting of comments with gq, r automatically insert current comment leader
 set copyindent " copy the structure of surrounding lines
 set noshiftround " do not round indents to multiples of 'shiftwidth'
 set showmatch " highlight matching brackets
@@ -25,10 +28,17 @@ set ignorecase " case insensitive search
 set smartcase " if caps exist, be case sensitive
 set smarttab " insert tabs in front of a line according to 'shiftwidth'
 set noerrorbells " do not play a sound on error
+set novisualbell " do not show visual error bells
+set cursorline " highlight the cursorline
+set nostartofline " move to the first non blank of the line
+set cmdheight=1 " command line height
 set list " show tabs in insert mode
 set listchars=tab:>•,trail:•,extends:#,nbsp:• " strings to use in 'list'
 set number " show line numbers
+set ruler " show the line and column number of the cursor position
 set showcmd " show partial command in the last line of the screen
+set showmode " show the mode we're in
+set laststatus=2 " always show a status line on the last window
 set splitright " vsplit new window to right
 set splitbelow " hsplit new window to bottom
 set wildmenu " use completion menu
@@ -40,6 +50,10 @@ set statusline+=%{SyntasticStatuslineFlag()} " show syntastic status line flag
 set statusline+=%* " set highlight group to user
 set clipboard=unnamedplus " use system clipboard
 set rtp+=~/.vim/bundle/Vundle.vim " add vundle to runtime path
+set nofoldenable " fold by indent, no big nesting
+set foldmethod=indent " code folding by indentation
+set foldnestmax=2 " maximum nesting level for folding
+set foldlevel=1 " foldlevel for first line of fold
 
 " Plugins
 silent! call vundle#begin()
@@ -60,6 +74,11 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'helino/vim-json' " enhanced JSON support
 Plugin 'ap/vim-css-color' " Preview colors in source code
 Plugin 'suan/vim-instant-markdown' " Preview markdown in the browser
+Plugin 'dkprice/vim-easygrep' " grep extension
+let g:EasyGrepFilesToExclude='bower_components,node_modules,.git,.tmp,packages' " files to exclude from grep
+let g:EasyGrepCommand=1 " use grep
+let g:EasyGrepRecursive=1 " grep recursively
+let g:EasyGrepSearchCurrentBufferDir=1 " start searching in current buffer first
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'haensl/mustang-vim'
