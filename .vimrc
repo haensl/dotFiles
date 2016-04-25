@@ -77,8 +77,6 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'haensl/mustang-vim'
 silent! call vundle#end()
 
-au BufWrite * :Autoformat " autoformat on write
-
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
