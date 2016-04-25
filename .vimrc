@@ -55,8 +55,6 @@ let delimitMate_expand_cr=1 " autoexpand carriage return
 Plugin 'scrooloose/syntastic' " advanced syntax highlighting and linting
 let g:syntastic_check_on_open=1 " check syntax when opening a file
 let g:syntastic_javascript_checkers=['jscs'] " js linters
-let g:syntastic_always_populate_loc_list=1 " populate syntax error location list
-let g:syntastic_auto_loc_list=1 " automatically open and/or close the location list
 Plugin 'Chiel92/vim-autoformat' " autoformatting
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'helino/vim-json' " enhanced JSON support
@@ -66,8 +64,6 @@ Plugin 'suan/vim-instant-markdown' " Preview markdown in the browser
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'haensl/mustang-vim'
 silent! call vundle#end()
-
-au BufWrite * :Autoformat " autoformat on write
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
