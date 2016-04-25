@@ -5,7 +5,7 @@ export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 # Alias ls
-alias ls="ls -la"
+alias ls="ls -la --color"
 
 # Alias kill
 alias kill="kill -s KILL"
