@@ -50,6 +50,10 @@ set statusline+=%{SyntasticStatuslineFlag()} " show syntastic status line flag
 set statusline+=%* " set highlight group to user
 set clipboard=unnamedplus " use system clipboard
 set rtp+=~/.vim/bundle/Vundle.vim " add vundle to runtime path
+set nofoldenable " fold by indent, no big nesting
+set foldmethod=indent " code folding by indentation
+set foldnestmax=2 " maximum nesting level for folding
+set foldlevel=1 " foldlevel for first line of fold
 
 " Plugins
 silent! call vundle#begin()
@@ -72,6 +76,11 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'helino/vim-json' " enhanced JSON support
 Plugin 'ap/vim-css-color' " Preview colors in source code
 Plugin 'suan/vim-instant-markdown' " Preview markdown in the browser
+Plugin 'dkprice/vim-easygrep' " grep extension
+let g:EasyGrepFilesToExclude='bower_components,node_modules,.git,.tmp,packages' " files to exclude from grep
+let g:EasyGrepCommand=1 " use grep
+let g:EasyGrepRecursive=1 " grep recursively
+let g:EasyGrepSearchCurrentBufferDir=1 " start searching in current buffer first
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'haensl/mustang-vim'
