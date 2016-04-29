@@ -45,10 +45,13 @@ set wildmenu " use completion menu
 set wildignore=*~,*.o,*.so,*.obj,*.out " ignore these extensions in search list
 set wildignore+=bower_components " exclude bower_components folder from search list
 set wildignore+=node_modules " exclude node_modules folder from search list
+set statusline="%f%m%r%h&w [%Y] [0x%02.2B]%< %F%=%4v,%41 %3p%% of %L" " show fileinfo in statusline
 set statusline+=%#warningmsg# " show warnings in the status line
 set statusline+=%{SyntasticStatuslineFlag()} " show syntastic status line flag
 set statusline+=%* " set highlight group to user
-set clipboard=unnamedplus " use system clipboard
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus " use system clipboard
+endif
 set rtp+=~/.vim/bundle/Vundle.vim " add vundle to runtime path
 set nofoldenable " fold by indent, no big nesting
 set foldmethod=indent " code folding by indentation
@@ -79,6 +82,12 @@ let g:EasyGrepFilesToExclude='bower_components,node_modules,.git,.tmp,packages' 
 let g:EasyGrepCommand=1 " use grep
 let g:EasyGrepRecursive=1 " grep recursively
 let g:EasyGrepSearchCurrentBufferDir=1 " start searching in current buffer first
+Plugin 'terryma/vim-smooth-scroll' " smooth scrolling in vim
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 1)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll,20, 1)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 2)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 2)<CR>
+
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'haensl/mustang-vim'
@@ -102,7 +111,7 @@ if &t_Co > 2 || has("gui_running")
   syntax on " enable syntax highlighting
   set hlsearch " highlight search results
   set background=dark
-  colorscheme mustang
+  colorscheme solarized
 endif
 
 " Only do this part when compiled with support for autocommands.
