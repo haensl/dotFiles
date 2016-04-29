@@ -88,6 +88,8 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll,20, 1)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 2)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 2)<CR>
 Plugin 'ekalinin/Dockerfile.vim' " Add docker syntax highlighting
+Plugin 'scrooloose/nerdtree' " tree explorer
+Plugin 'Xuyuanp/nerdtree-git-plugin' " add git support to nerdtree
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
