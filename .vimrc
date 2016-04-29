@@ -61,6 +61,7 @@ set foldlevel=1 " foldlevel for first line of fold
 " Plugins
 silent! call vundle#begin()
 " Extensions
+Plugin 'scrooloose/syntastic' " advanced syntax highlighting and linting
 Plugin 'pangloss/vim-javascript' " extended javascript support
 let javascript_enable_domhtmlcss=1 " enable HTML/CSS syntax highlighting
 Plugin 'jelera/vim-javascript-syntax' " javascript syntax rules
@@ -69,7 +70,6 @@ let g:indent_guides_enable_on_vim_startup=1 " enable indentation guides on start
 let g:indent_guides_auto_colors=0 " disable autodiscovery of guide colors to fix colorscheme definitions
 Plugin 'Raimondi/delimitMate' " auto close brackets and quotes
 let delimitMate_expand_cr=1 " autoexpand carriage return
-Plugin 'scrooloose/syntastic' " advanced syntax highlighting and linting
 let g:syntastic_check_on_open=1 " check syntax when opening a file
 let g:syntastic_javascript_checkers=['jscs'] " js linters
 Plugin 'Chiel92/vim-autoformat' " autoformatting
@@ -87,6 +87,7 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 1)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll,20, 1)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 2)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 2)<CR>
+Plugin 'ekalinin/Dockerfile.vim' " Add docker syntax highlighting
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
