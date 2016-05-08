@@ -7,7 +7,7 @@ export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 # Alias ls
-alias ls="ls -la --color"
+alias ls="ls -la"
 
 # Alias ps
 alias ps="ps aux"

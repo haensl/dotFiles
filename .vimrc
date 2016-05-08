@@ -102,7 +102,7 @@ if &t_Co > 2 || has("gui_running")
   syntax on " enable syntax highlighting
   set hlsearch " highlight search results
   set background=dark
-  colorscheme mustang
+  colorscheme solarized
 endif
 
 " Only do this part when compiled with support for autocommands.
