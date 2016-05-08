@@ -45,10 +45,13 @@ set wildmenu " use completion menu
 set wildignore=*~,*.o,*.so,*.obj,*.out " ignore these extensions in search list
 set wildignore+=bower_components " exclude bower_components folder from search list
 set wildignore+=node_modules " exclude node_modules folder from search list
+set statusline="%f%m%r%h&w [%Y] [0x%02.2B]%< %F%=%4v,%41 %3p%% of %L" " show fileinfo in statusline
 set statusline+=%#warningmsg# " show warnings in the status line
 set statusline+=%{SyntasticStatuslineFlag()} " show syntastic status line flag
 set statusline+=%* " set highlight group to user
-set clipboard=unnamedplus " use system clipboard
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus " use system clipboard
+endif
 set rtp+=~/.vim/bundle/Vundle.vim " add vundle to runtime path
 set nofoldenable " fold by indent, no big nesting
 set foldmethod=indent " code folding by indentation
@@ -58,6 +61,7 @@ set foldlevel=1 " foldlevel for first line of fold
 " Plugins
 silent! call vundle#begin()
 " Extensions
+Plugin 'scrooloose/syntastic' " advanced syntax highlighting and linting
 Plugin 'pangloss/vim-javascript' " extended javascript support
 let javascript_enable_domhtmlcss=1 " enable HTML/CSS syntax highlighting
 Plugin 'jelera/vim-javascript-syntax' " javascript syntax rules
@@ -66,7 +70,6 @@ let g:indent_guides_enable_on_vim_startup=1 " enable indentation guides on start
 let g:indent_guides_auto_colors=0 " disable autodiscovery of guide colors to fix colorscheme definitions
 Plugin 'Raimondi/delimitMate' " auto close brackets and quotes
 let delimitMate_expand_cr=1 " autoexpand carriage return
-Plugin 'scrooloose/syntastic' " advanced syntax highlighting and linting
 let g:syntastic_check_on_open=1 " check syntax when opening a file
 let g:syntastic_javascript_checkers=['jscs'] " js linters
 Plugin 'Chiel92/vim-autoformat' " autoformatting
@@ -79,6 +82,15 @@ let g:EasyGrepFilesToExclude='bower_components,node_modules,.git,.tmp,packages' 
 let g:EasyGrepCommand=1 " use grep
 let g:EasyGrepRecursive=1 " grep recursively
 let g:EasyGrepSearchCurrentBufferDir=1 " start searching in current buffer first
+Plugin 'terryma/vim-smooth-scroll' " smooth scrolling in vim
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 1)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll,20, 1)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 2)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 2)<CR>
+Plugin 'ekalinin/Dockerfile.vim' " Add docker syntax highlighting
+Plugin 'scrooloose/nerdtree' " tree explorer
+Plugin 'Xuyuanp/nerdtree-git-plugin' " add git support to nerdtree
+
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'haensl/mustang-vim'
