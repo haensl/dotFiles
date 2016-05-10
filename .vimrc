@@ -65,9 +65,8 @@ Plugin 'scrooloose/syntastic' " advanced syntax highlighting and linting
 Plugin 'pangloss/vim-javascript' " extended javascript support
 let javascript_enable_domhtmlcss=1 " enable HTML/CSS syntax highlighting
 Plugin 'jelera/vim-javascript-syntax' " javascript syntax rules
-Plugin 'nathanaelkane/vim-indent-guides' " show indentation guides
-let g:indent_guides_enable_on_vim_startup=1 " enable indentation guides on startup
-let g:indent_guides_auto_colors=0 " disable autodiscovery of guide colors to fix colorscheme definitions
+Plugin 'Yggdroot/indentLine' " indentation guides
+let g:indentLine_leadingSpaceEnabled=1 " show leading spaces
 Plugin 'Raimondi/delimitMate' " auto close brackets and quotes
 let delimitMate_expand_cr=1 " autoexpand carriage return
 let g:syntastic_check_on_open=1 " check syntax when opening a file
@@ -90,6 +89,7 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 2)<CR>
 Plugin 'ekalinin/Dockerfile.vim' " Add docker syntax highlighting
 Plugin 'scrooloose/nerdtree' " tree explorer
 Plugin 'Xuyuanp/nerdtree-git-plugin' " add git support to nerdtree
+:command Nt NERDTreeToggle
 Plugin 'vim-airline/vim-airline' " add fancy status bars
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled=1
