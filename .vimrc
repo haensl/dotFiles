@@ -90,6 +90,12 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 2)<CR>
 Plugin 'ekalinin/Dockerfile.vim' " Add docker syntax highlighting
 Plugin 'scrooloose/nerdtree' " tree explorer
 Plugin 'Xuyuanp/nerdtree-git-plugin' " add git support to nerdtree
+Plugin 'vim-airline/vim-airline' " add fancy status bars
+Plugin 'vim-airline/vim-airline-themes'
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
+let g:airline_theme='solarized'
+Plugin 'tpope/vim-fugitive' " extended git support
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
