@@ -72,7 +72,7 @@ let delimitMate_expand_cr=1 " autoexpand carriage return
 let g:syntastic_check_on_open=1 " check syntax when opening a file
 let g:syntastic_javascript_checkers=['jscs'] " js linters
 Plugin 'Chiel92/vim-autoformat' " autoformatting
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim' " fuzzy file search
 Plugin 'helino/vim-json' " enhanced JSON support
 Plugin 'ap/vim-css-color' " Preview colors in source code
 Plugin 'suan/vim-instant-markdown' " Preview markdown in the browser
