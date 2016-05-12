@@ -76,6 +76,7 @@ Plugin 'ctrlpvim/ctrlp.vim' " fuzzy file search
 Plugin 'helino/vim-json' " enhanced JSON support
 Plugin 'ap/vim-css-color' " Preview colors in source code
 Plugin 'suan/vim-instant-markdown' " Preview markdown in the browser
+Plugin 'JulesWang/css.vim' " CSS syntax rules
 Plugin 'dkprice/vim-easygrep' " grep extension
 let g:EasyGrepFilesToExclude='bower_components,node_modules,.git,.tmp,packages' " files to exclude from grep
 let g:EasyGrepCommand=1 " use grep
@@ -96,6 +97,7 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
 let g:airline_theme='solarized'
 Plugin 'tpope/vim-fugitive' " extended git support
+Plugin 'tpope/vim-surround' " surrounding text
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
