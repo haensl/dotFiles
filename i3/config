@@ -184,4 +184,8 @@ bar {
 bindsym $mod+Shift+x exec i3lock --color #3f3f3f
 exec VBoxClient-all &
 
+# load urxvt config
 exec xrdb -merge ~/.Xresources
+
+# restore wallpaper
+exec nitrogen --restore &
