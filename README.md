@@ -6,6 +6,8 @@ My dotfile collection.
 
 [.bashrc](.bashrc)
 
+[.alias](.alias)
+
 ## fonts
 [.fonts](.fonts)
 
