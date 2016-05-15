@@ -16,7 +16,7 @@ My dotfile collection.
 [i3](i3)
 
 ## icons
-[.icons](.icons)
+[icons](icons)
 
 ## JSCS
 [.jscsrc](.jscsrc)
