@@ -31,7 +31,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec termite 
+bindsym $mod+Return exec urxvt 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -171,13 +171,17 @@ bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	colors {
 		background $bg-color
-		separator $text-color
+		separator $inactive-text-color
 		#			border		background	text
 		focused_workspace	$focus-color	$focus-color	$inactive-bg-color
 		inactive_workspace	$inactive-bg-color	$inactive-bg-color	$inactive-text-color
+		active_workspace	$focus-color	$focus-color	$inactive-bg-color
+		urgent_workspace	$focus-color	$focus-color	$inactive-bg-color
 	}
 }
 
 # Lock screen shortcut
 bindsym $mod+Shift+x exec i3lock --color #3f3f3f
 exec VBoxClient-all &
+
+exec xrdb -merge ~/.Xresources
