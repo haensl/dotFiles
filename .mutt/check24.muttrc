@@ -1,0 +1,17 @@
+#########################
+# CHECK24 mail settings #
+#########################
+
+set from = 			'Hans-Peter Dietz <hanspeter.dietz@check24.de>'
+set ssl_force_tls = 		yes
+set ssl_starttls =		yes
+set sendmail = 			'/usr/bin/msmtp -C /home/hp/.mutt/msmtprc'
+set imap_user =			$my_c24_user
+set imap_pass =			$my_c24_pass
+set imap_pipeline_depth = 	0
+set imap_keepalive =		300
+unset imap_passive
+set spoolfile = 		"imaps://owa.check24.de:993/INBOX"
+set folder =			"imaps://owa.check24.de:993/INBOX"
+set record =			"imaps://owa.check24.de:993/Gesendete Elemente"
+set postponed =			"imaps://owa.check24.de:993/Drafts"

@@ -1,0 +1,46 @@
+set charset	= 'utf-8'
+set editor	=`echo \$EDITOR`
+
+# Source credentials
+source 'gpg -dq ~/.mutt/check24.gpg |'
+
+# Store message headers locally to speed things up.
+# If hcache is a folder, mutt will create sub cache folders for each account which may speed things up even more.
+set header_cache = ~/.mutt/cache/headers
+
+# Store messages locally to speed things up, like searching message bodies.
+# Can be the same folder as header_cache.
+set message_cachedir = ~/.mutt/cache/bodies
+
+# Store trusted certificates
+set certificate_file = ~/.mutt/certificates
+
+# How often to check for new mail (time in seconds).
+set mail_check = 120
+
+# Delete messages without keeping them in mailbox
+set delete = yes
+
+# Do not ask before appending a message to a mailbox
+set confirmappend = no
+
+# Specify how long mutt should block while waiting for input (time in seconds)
+set timeout = 15
+
+# Sort mails by threads
+set sort = 'threads'
+
+# Sort threads by last received descending
+set sort_aux = 'reverse-last-date-received'
+
+# Solarized color scheme
+source '~/.mutt/colors/solarized-dark-256.muttrc'
+
+# specify mailcap file to consult for different mime bodies
+set mailcap_path = ~/.mutt/mailcap
+
+# when receiving mails with multiple/alternate encodings use them in the following order
+alternative_order text/plain text/html
+
+# Source check24 email config
+source '~/.mutt/check24.muttrc'

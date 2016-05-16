@@ -181,7 +181,8 @@ bar {
 }
 
 # Lock screen shortcut
-bindsym $mod+Shift+x exec i3lock --color #3f3f3f
+bindsym $mod+Shift+x exec i3lock -e -i '/usr/share/archlinux/wallpaper/archlinux-simplyblack.png'
+
 exec VBoxClient-all &
 
 # load urxvt config

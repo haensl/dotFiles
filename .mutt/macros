@@ -1,0 +1,4 @@
+# mutt macro definitions
+
+# open urls using urlview
+macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
