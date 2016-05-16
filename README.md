@@ -23,6 +23,9 @@ My dotfile collection.
 ## JSCS
 [.jscsrc](.jscsrc)
 
+## Mutt
+[.mutt](.mutt)
+
 ## uxrvt
 [.Xresources](.Xresources)
 
