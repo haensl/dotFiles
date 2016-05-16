@@ -26,7 +26,7 @@ My dotfile collection.
 ## Mutt
 [.mutt](.mutt)
 
-## uxrvt
+## urxvt
 [.Xresources](.Xresources)
 
 ## VIM
