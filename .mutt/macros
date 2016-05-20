@@ -4,4 +4,4 @@
 macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 
 # add events to calcurse
-macro index,pager \ck ":unset wait_key\n |mutt2calcurse<enter><exit>"
+macro index,pager \ck <pipe-entry>'mutt2calcurse'<enter> 'Add ical events to calcurse'
