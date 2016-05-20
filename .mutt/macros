@@ -2,3 +2,6 @@
 
 # open urls using urlview
 macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+
+# add events to calcurse
+macro index,pager \ck ":unset wait_key\n |mutt2calcurse<enter><exit>"

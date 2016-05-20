@@ -42,5 +42,8 @@ set mailcap_path = ~/.mutt/mailcap
 # when receiving mails with multiple/alternate encodings use them in the following order
 alternative_order text/plain text/html
 
+auto_view text/html
+auto_view text/calendar
+
 # Source check24 email config
 source '~/.mutt/check24.muttrc'
