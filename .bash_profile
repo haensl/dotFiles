@@ -1,3 +1,7 @@
+set -o vi
+set editing-mode vi
+set show-mode-in-prompt on
+
 # VIM 4TW!
 export EDITOR=/usr/bin/vim
 alias v="vim"
