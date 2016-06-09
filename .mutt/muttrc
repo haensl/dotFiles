@@ -47,3 +47,19 @@ auto_view text/calendar
 
 # Source check24 email config
 source '~/.mutt/check24.muttrc'
+
+# shortcut to add ical events to calcurse
+macro index,pager \ck <pipe-entry>'mutt2calcurse'<enter> 'Add ical events to calcurse'
+
+# scrolling
+bind pager k previous-line
+bind pager j next-line
+bind generic L bottom-page
+bind generic \cb half-up
+bind generic \cf half-down
+
+# forwarding
+bind index f forward-message
+
+set sleep_time = 0
+set smart_wrap

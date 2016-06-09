@@ -91,11 +91,12 @@ Plugin 'ekalinin/Dockerfile.vim' " Add docker syntax highlighting
 Plugin 'scrooloose/nerdtree' " tree explorer
 Plugin 'Xuyuanp/nerdtree-git-plugin' " add git support to nerdtree
 :command Nt NERDTreeToggle
-Plugin 'vim-airline/vim-airline' " add fancy status bars
-Plugin 'vim-airline/vim-airline-themes'
-let g:airline#extensions#tabline#enabled=1
-let g:airline_powerline_fonts=1
-let g:airline_theme='solarized'
+" Plugin 'vim-airline/vim-airline' " add fancy status bars
+" Plugin 'vim-airline/vim-airline-themes'
+" let g:airline#extensions#tabline#enabled=1
+" let g:airline_powerline_fonts=1
+" let g:airline_theme='solarized'
+Plugin 'itchyny/lightline.vim'
 Plugin 'tpope/vim-fugitive' " extended git support
 Plugin 'tpope/vim-surround' " surrounding text
 
@@ -166,3 +167,4 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
         \ | wincmd p | diffthis
 endif
+source $HOME/.vim/lightline.vimrc " include lightline config

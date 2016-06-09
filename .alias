@@ -20,10 +20,19 @@ alias timestamp="date +%s"
 alias gitLOC="git ls-files | xargs wc -l"
 
 alias v="vim"
-export EDITOR=/usr/bin/vim
 
 # Alias to calculate SHA-256
 alias sha256="shasum -a 256"
 
 # Alias to calculate SHA-1
 alias sha1="shasum -a 1"
+
+# Alias git
+alias g="git"
+alias gs="git status"
+
+# Include local extensions if available
+LOCAL_EXTENSIONS_FILE=~/.alias.local
+if [ -e "$LOCAL_EXTENSIONS_FILE" ]; then
+  source $LOCAL_EXTENSIONS_FILE
+fi
