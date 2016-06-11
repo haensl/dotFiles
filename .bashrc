@@ -44,7 +44,7 @@ function dirByDir {
       _ppd="${_ppd#*/}"
       let --i
     done
-    echo "$continuation$_ppd"
+    echo "$continuation/$_ppd"
   fi
 }
 
