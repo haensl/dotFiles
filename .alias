@@ -2,7 +2,11 @@
 alias ping="ping -c 3 -v -R"
 
 # Alias ls
-alias ls="ls -la --color"
+if [ -n "$(uname -s | grep Linux)" ]; then
+  alias ls="ls -la --color"
+else
+  alias ls="ls -laG"
+fi
 
 # Alias kill
 alias kill="kill -s KILL"
@@ -32,7 +36,6 @@ alias g="git"
 alias gs="git status"
 
 # Include local extensions if available
-LOCAL_EXTENSIONS_FILE=~/.alias.local
-if [ -e "$LOCAL_EXTENSIONS_FILE" ]; then
-  source $LOCAL_EXTENSIONS_FILE
-fi
+LOCAL_ALIAS_EXTENSIONS=~/.alias.local
+
+test -s $LOCAL_ALIAS_EXTENSIONS && . $LOCAL_ALIAS_EXTENSIONS || true
