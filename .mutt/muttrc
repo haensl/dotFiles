@@ -15,6 +15,9 @@ set message_cachedir = ~/.mutt/cache/bodies
 # Store trusted certificates
 set certificate_file = ~/.mutt/certificates
 
+# Sent messages
+set record = ~/.mutt/sent
+
 # How often to check for new mail (time in seconds).
 set mail_check = 120
 
