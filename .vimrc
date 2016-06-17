@@ -14,7 +14,13 @@ set ruler " show the cursor position all the time
 set showcmd " display incomplete commands
 set incsearch " do incremental searching
 set hidden " in memory buffers
-set nowrap " do not wrap long lines
+set wrap " wrap long lines
+set linebreak " wrap at linebreak chars
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor = "latex" " latex support
+set nolist " disable linebreak
+set textwidth=0 " line width (0=whole width of the window)
+set wrapmargin=0 " number of chars from the right where wrapping starts
 set tabstop=2 " tab width = 2 spaces
 set shiftwidth=2 " shift width = 2 spaces
 set softtabstop=2 " number of spaces that 'tab' counts for when editing
