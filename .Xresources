@@ -8,7 +8,7 @@ URxvt.depth:		32
 URxvt.transparent:	false
 URxvt.fading:		0
 URxvt.loginShell:	true
-URxvt.saveLines:	10000
+URxvt.saveLines:	100000
 URxvt.internalBorder:	3
 URxvt.lineSpace:	0
 URxvt.font: 		xft:Hack:size=12
