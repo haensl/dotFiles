@@ -20,6 +20,8 @@ URxvt.cursorBlink:	true
 URxvt.cursorColor:	#1793D1
 URxvt.cursorUnderline:	false
 
+URxvt.urlLauncher: /usr/bin/google-chrome-stable
+
 !! Solarized color scheme
 !!Source http://github.com/altercation/solarized
 

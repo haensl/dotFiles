@@ -49,8 +49,11 @@ set splitright " vsplit new window to right
 set splitbelow " hsplit new window to bottom
 set wildmenu " use completion menu
 set wildignore=*~,*.o,*.so,*.obj,*.out " ignore these extensions in search list
-set wildignore+=bower_components " exclude bower_components folder from search list
-set wildignore+=node_modules " exclude node_modules folder from search list
+set wildignore+=bower_components/* " exclude bower_components folder from search list
+set wildignore+=node_modules/* " exclude node_modules folder from search list
+set wildignore+=dist/* " exclude dist folder from search list
+set wildignore+=tmp/* " exclude tmp folder from search list
+set wildignore+=build/* " exclude build folder from search list
 set statusline="%f%m%r%h&w [%Y] [0x%02.2B]%< %F%=%4v,%41 %3p%% of %L" " show fileinfo in statusline
 set statusline+=%#warningmsg# " show warnings in the status line
 set statusline+=%{SyntasticStatuslineFlag()} " show syntastic status line flag
@@ -76,7 +79,11 @@ let g:indentLine_leadingSpaceEnabled=1 " show leading spaces
 Plugin 'Raimondi/delimitMate' " auto close brackets and quotes
 let delimitMate_expand_cr=1 " autoexpand carriage return
 let g:syntastic_check_on_open=1 " check syntax when opening a file
-let g:syntastic_javascript_checkers=['jscs'] " js linters
+let g:syntastic_error_symbol='!'
+let g:syntastic_style_error_symbol='!>'
+let g:syntastic_warning_symbol='>>'
+let g:syntastic_style_warning_symbol='>'
+" let g:syntastic_javascript_checkers=['jscs', 'eslint'] " js linters
 Plugin 'Chiel92/vim-autoformat' " autoformatting
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy file search
 Plugin 'helino/vim-json' " enhanced JSON support
@@ -107,15 +114,32 @@ Plugin 'tpope/vim-fugitive' " extended git support
 Plugin 'tpope/vim-surround' " surrounding text
 
 " Color schemes
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'jwhitley/vim-colors-solarized'
 Plugin 'haensl/mustang-vim'
+Plugin 'fatih/vim-go'
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+Plugin 'euclio/gitignore.vim' " Add .gitignore to wildignore
 silent! call vundle#end()
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-map <F6> :bn<CR>
-map <F6> :bp<CR>
+map <C-l> :bn<CR>
+map <C-h> :bp<CR>
+
+" Go support
+set rtp+=$GOPATH/src/github.com/golang/lin/misc/vim
+" autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
+
+" Riot .tag = html
+au BufRead,BufNewFile *.tag :set filetype=html
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -143,6 +167,9 @@ if has("autocmd")
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
+
+  " Use eslint if the project has a .eslintrc else default to jscs
+  autocmd FileType javascript let g:syntastic_javascript_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['jscs']
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
