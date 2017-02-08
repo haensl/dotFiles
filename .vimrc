@@ -16,7 +16,7 @@ set incsearch " do incremental searching
 set hidden " in memory buffers
 set wrap " wrap long lines
 set linebreak " wrap at linebreak chars
-set grepprg=grep\ -nH\ $*
+set grepprg=grep\ -nH\ $* " make grep always output a filename
 let g:tex_flavor = "latex" " latex support
 set nolist " disable linebreak
 set textwidth=0 " line width (0=whole width of the window)
@@ -63,6 +63,7 @@ set nofoldenable " fold by indent, no big nesting
 set foldmethod=indent " code folding by indentation
 set foldnestmax=2 " maximum nesting level for folding
 set foldlevel=1 " foldlevel for first line of fold
+set guifont=Hack:h18
 
 " Plugins
 silent! call vundle#begin()
@@ -114,8 +115,8 @@ silent! call vundle#end()
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-map <F6> :bn<CR>
-map <F6> :bp<CR>
+map <C-l> :bn<CR>
+map <C-h> :bp<CR>
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
