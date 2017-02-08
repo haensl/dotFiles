@@ -3,9 +3,9 @@ alias ping="ping -c 3 -v -R"
 
 # Alias ls
 if [ -n "$(uname -s | grep Linux)" ]; then
-  alias ls="ls -la --color"
+  alias ls="ls -lah --color"
 else
-  alias ls="ls -laG"
+  alias ls="ls -lahG"
 fi
 
 # Alias kill
@@ -34,6 +34,13 @@ alias sha1="shasum -a 1"
 # Alias git
 alias g="git"
 alias gs="git status"
+
+# Grep convenience options
+GREP_OPTIONS=
+for pattern in .cvs .git .hg .svn node_modules bower_components; do
+  GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=$pattern"
+done
+alias grep="grep $GREP_OPTIONS"
 
 # Include local extensions if available
 LOCAL_ALIAS_EXTENSIONS=~/.alias.local

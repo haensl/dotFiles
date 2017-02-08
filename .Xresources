@@ -8,7 +8,7 @@ URxvt.depth:		32
 URxvt.transparent:	false
 URxvt.fading:		0
 URxvt.loginShell:	true
-URxvt.saveLines:	1000
+URxvt.saveLines:	100000
 URxvt.internalBorder:	3
 URxvt.lineSpace:	0
 URxvt.font: 		xft:Hack:size=12
@@ -19,6 +19,8 @@ URxvt.urlLauncher:	google-chrome
 URxvt.cursorBlink:	true
 URxvt.cursorColor:	#1793D1
 URxvt.cursorUnderline:	false
+
+URxvt.urlLauncher: /usr/bin/google-chrome-stable
 
 !! Solarized color scheme
 !!Source http://github.com/altercation/solarized

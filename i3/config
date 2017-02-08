@@ -93,6 +93,12 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# workspace names
+rename workspace 1 to "1: "
+rename workspace 2 to "2: "
+rename workspace 3 to "3: "
+rename workspace 4 to "4: "
+
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -180,6 +186,9 @@ bar {
 	}
 }
 
+bindsym XF86AudioLowerVolume exec amixer sset Master 3-
+bindsym XF86AudioRaiseVolume exec amixer sset Master 3+
+bindsym XF86AudioMute exec amixer sset Master toggle
 # Lock screen shortcut
 bindsym $mod+Shift+x exec i3lock -e -i '/usr/share/archlinux/wallpaper/archlinux-simplyblack.png'
 
