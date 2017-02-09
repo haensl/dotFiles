@@ -83,6 +83,7 @@ let g:syntastic_error_symbol='!'
 let g:syntastic_style_error_symbol='!>'
 let g:syntastic_warning_symbol='>>'
 let g:syntastic_style_warning_symbol='>'
+let g:syntastic_javascript_checkers=['eslint']
 " let g:syntastic_javascript_checkers=['jscs', 'eslint'] " js linters
 Plugin 'Chiel92/vim-autoformat' " autoformatting
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy file search
@@ -167,9 +168,6 @@ if has("autocmd")
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
-
-  " Use eslint if the project has a .eslintrc else default to jscs
-  autocmd FileType javascript let g:syntastic_javascript_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['jscs']
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx

@@ -35,12 +35,28 @@ alias sha1="shasum -a 1"
 alias g="git"
 alias gs="git status"
 
+function getGitignore {
+  local ignores
+  if [ -f .gitignore ]; then
+    while read pattern
+    do
+      if [ -d $pattern ] || [[ "$pattern" == */ ]]; then
+        ignores="$ignores --exclude-dir=$pattern"
+      else
+        ignores="$ignores --exclude=$pattern"
+      fi
+    done < .gitignore
+  else
+    for pattern in .cvs .git .hg .svn node_modules bower_components; do
+      ignores="$ignores --exclude-dir=$pattern"
+    done
+  fi
+
+  echo $ignores
+}
+
 # Grep convenience options
-GREP_OPTIONS=
-for pattern in .cvs .git .hg .svn node_modules bower_components; do
-  GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=$pattern"
-done
-alias grep="grep $GREP_OPTIONS"
+alias grep="grep $(getGitignore)"
 
 # Include local extensions if available
 LOCAL_ALIAS_EXTENSIONS=~/.alias.local
