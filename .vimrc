@@ -86,7 +86,7 @@ let g:syntastic_style_error_symbol='!>'
 let g:syntastic_warning_symbol='>>'
 let g:syntastic_style_warning_symbol='>'
 let g:syntastic_javascript_checkers = ['eslint']
-
+" let g:syntastic_javascript_checkers=['jscs', 'eslint'] " js linters
 Plugin 'Chiel92/vim-autoformat' " autoformatting
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy file search
 Plugin 'helino/vim-json' " enhanced JSON support

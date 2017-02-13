@@ -8,6 +8,9 @@ My dotfile collection.
 
 [.alias](.alias)
 
+## ESLint
+[.eslintrc](.eslintrc)
+
 ## fonts
 [.fonts](.fonts)
 
@@ -31,3 +34,5 @@ My dotfile collection.
 
 ## VIM
 [.vimrc](.vimrc)
+
+## [CHANGELOG](CHANGELOG.md)
