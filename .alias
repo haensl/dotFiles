@@ -35,7 +35,7 @@ alias sha1="shasum -a 1"
 alias g="git"
 alias gs="git status"
 
-function getGitignore {
+getGitignore() {
   local ignores
   if [ -f .gitignore ]; then
     while read pattern
@@ -56,7 +56,14 @@ function getGitignore {
 }
 
 # Grep convenience options
-alias grep="grep $(getGitignore)"
+alias grep="grep -R --color $(getGitignore)"
+
+randpw() {
+  echo "$(head /dev/urandom | tr -dc _A-Z-a-z-0-9 | head -c$1)"
+}
+
+# Password generator
+alias genpwd="randpw"
 
 # Include local extensions if available
 LOCAL_ALIAS_EXTENSIONS=~/.alias.local
