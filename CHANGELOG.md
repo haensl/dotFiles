@@ -1,3 +1,8 @@
+## 1.2.1
+* Include .bashrc in .bash_profile if present
+* Map leader to comma
+* Update conceallevel
+
 ## 1.2.0
 * Add package.json to keep track of node modules
 

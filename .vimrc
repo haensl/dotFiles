@@ -67,6 +67,7 @@ set foldmethod=indent " code folding by indentation
 set foldnestmax=2 " maximum nesting level for folding
 set foldlevel=1 " foldlevel for first line of fold
 set guifont=Hack:h18
+let mapleader = ','
 
 " Plugins
 silent! call vundle#begin()
@@ -204,3 +205,4 @@ if !exists(":DiffOrig")
         \ | wincmd p | diffthis
 endif
 source $HOME/.vim/lightline.vimrc " include lightline config
+set conceallevel=0
