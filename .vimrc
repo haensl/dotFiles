@@ -39,7 +39,7 @@ set cursorline " highlight the cursorline
 set nostartofline " move to the first non blank of the line
 set cmdheight=1 " command line height
 set list " show tabs in insert mode
-set listchars=tab:>•,trail:•,extends:#,nbsp:• " strings to use in 'list'
+set listchars=tab:>•,trail:•,extends:#,nbsp:•,conceal:% " strings to use in 'list'
 set number " show line numbers
 set ruler " show the line and column number of the cursor position
 set showcmd " show partial command in the last line of the screen
