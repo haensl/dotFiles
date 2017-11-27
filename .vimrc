@@ -73,6 +73,7 @@ silent! call vundle#begin()
 Plugin 'scrooloose/syntastic' " advanced syntax highlighting and linting
 Plugin 'pangloss/vim-javascript' " extended javascript support
 let javascript_enable_domhtmlcss=1 " enable HTML/CSS syntax highlighting
+Plugin 'mxw/vim-jsx' " enable JSX support
 Plugin 'jelera/vim-javascript-syntax' " javascript syntax rules
 Plugin 'Yggdroot/indentLine' " indentation guides
 let g:indentLine_leadingSpaceEnabled=1 " show leading spaces
@@ -96,11 +97,11 @@ let g:EasyGrepFilesToExclude='bower_components,node_modules,.git,.tmp,packages' 
 let g:EasyGrepCommand=1 " use grep
 let g:EasyGrepRecursive=1 " grep recursively
 let g:EasyGrepSearchCurrentBufferDir=1 " start searching in current buffer first
-Plugin 'terryma/vim-smooth-scroll' " smooth scrolling in vim
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 1)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll,20, 1)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 2)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 2)<CR>
+" Plugin 'terryma/vim-smooth-scroll' " smooth scrolling in vim
+" noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 1)<CR>
+" noremap <silent> <c-d> :call smooth_scroll#down(&scroll,20, 1)<CR>
+" noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 2)<CR>
+" noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 2)<CR>
 Plugin 'ekalinin/Dockerfile.vim' " Add docker syntax highlighting
 Plugin 'scrooloose/nerdtree' " tree explorer
 Plugin 'Xuyuanp/nerdtree-git-plugin' " add git support to nerdtree
@@ -158,6 +159,7 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch " highlight search results
   set background=dark
   colorscheme solarized
+  syntax sync minlines=256
 endif
 
 " Only do this part when compiled with support for autocommands.

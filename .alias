@@ -65,6 +65,10 @@ randpw() {
 # Password generator
 alias genpwd="randpw"
 
+# Folder movement
+alias ..="cd .."
+alias ...="cd ../.."
+
 # Include local extensions if available
 LOCAL_ALIAS_EXTENSIONS=~/.alias.local
 
