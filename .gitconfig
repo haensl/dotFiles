@@ -36,6 +36,8 @@
   b = branch
   bd = branch -D
   branches = branch --all
+  m = branch --merged
+  mm = branch --merged master
   co = checkout
   cb = checkout -b
   x = commit -m
