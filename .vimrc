@@ -67,6 +67,7 @@ set foldmethod=indent " code folding by indentation
 set foldnestmax=2 " maximum nesting level for folding
 set foldlevel=1 " foldlevel for first line of fold
 set guifont=Hack:h18
+syntax sync minlines=256
 let mapleader = ','
 
 " Plugins
@@ -144,6 +145,8 @@ set rtp+=$GOPATH/src/github.com/golang/lin/misc/vim
 
 " Riot .tag = html
 au BufRead,BufNewFile *.tag :set filetype=html
+" Mustache .mustache = html
+au BufRead,BufNewFile *.mustache :set filetype=html
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
