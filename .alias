@@ -65,6 +65,8 @@ randpw() {
 # Password generator
 alias genpwd="randpw"
 
+alias version="head -n2 CHANGELOG.md"
+
 # Include local extensions if available
 LOCAL_ALIAS_EXTENSIONS=~/.alias.local
 
