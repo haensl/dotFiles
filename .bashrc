@@ -7,13 +7,14 @@ export PAGER=/usr/bin/less
 set -o vi
 set show-mode-in-prompt on
 
-ORANGE='\[\033[0;33m\]'
-BLUE='\[\033[0;34m\]'
-GREEN='\[\033[0;32m\]'
-NO_COLOR='\[\033[0m\]'
-LOCAL_BASH_EXTENSIONS=~/.bashrc.local
-ALIAS_FILE=~/.alias
-IS_OSX="$(uname -s | grep Darwin)"
+readonly ORANGE='\[\033[0;33m\]'
+readonly BLUE='\[\033[0;34m\]'
+readonly GREEN='\[\033[0;32m\]'
+readonly NO_COLOR='\[\033[0m\]'
+readonly LOCAL_BASH_EXTENSIONS=~/.bashrc.local
+readonly ALIAS_FILE=~/.alias
+readonly IS_OSX="$(uname -s | grep Darwin)"
+readonly BASH_COMPLETION_FOLDER=/etc/bash_completion.d/
 
 if [ $ON_OSX ]; then
   ulimit -n 10480
@@ -56,5 +57,15 @@ function branch {
 
 export PS1="${ORANGE}\u@\h ${BLUE}\$(dirByDir 3)${NO_COLOR} ${GREEN}\$(branch)${NO_COLOR}\n${BLUE}∞${NO_COLOR} "
 
+if [ -d ${BASH_COMPLETION_FOLDER} ]; then
+  for i in $(ls ${BASH_COMPLETION_FOLDER});
+  do
+    source "${BASH_COMPLETION_FOLDER}${i}"
+  done
+fi
+
 test -s $ALIAS_FILE && . $ALIAS_FILE || true
 test -s $LOCAL_BASH_EXTENSTIONS && . $LOCAL_BASH_EXTENSIONS || true
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

@@ -65,9 +65,13 @@ randpw() {
 # Password generator
 alias genpwd="randpw"
 
+# View last few lines from CHANGELOG
 alias version="head -n2 CHANGELOG.md"
+
+# Folder movement
+alias ..="cd .."
+alias ...="cd ../.."
 
 # Include local extensions if available
 LOCAL_ALIAS_EXTENSIONS=~/.alias.local
-
 test -s $LOCAL_ALIAS_EXTENSIONS && . $LOCAL_ALIAS_EXTENSIONS || true

@@ -5,10 +5,13 @@
 * Map `.mustache` files to `html` filetype in vim.
 * Add gitignore.
 
-## 1.2.1
+## 1.2.2
 * Include .bashrc in .bash_profile if present.
 * Map leader to comma.
 * Update conceallevel.
+
+## 1.2.1
+* Update eslintrc
 
 ## 1.2.0
 * Add package.json to keep track of node modules.
