@@ -1,6 +1,6 @@
 {
   "name": "dotfiles",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "description": "HP's dotfile collection.",
   "main": "README.md",
   "scripts": {},
@@ -11,7 +11,11 @@
   "keywords": [
     "dotfiles"
   ],
-  "author": "HP Dietz <h.p.dietz@gmail.com>",
+  "author": {
+    "name": "HP Dietz",
+    "email": "h.p.dietz@gmail.com",
+    "twitter": "@h_p_d"
+  },
   "bugs": {
     "url": "https://github.com/haensl/dotFiles/issues"
   },
@@ -19,13 +23,6 @@
   "preferGlobal": true,
   "dependencies": {
     "eslint": "^3.11.1",
-    "eslint-config-airbnb": "^13.0.0",
-    "eslint-config-standard": "^5.3.5",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-react": "^6.8.0",
-    "eslint-plugin-standard": "^2.0.0",
-    "instant-markdown-d": "^0.1.0"
+    "instant-markdown-d": "~0.1.0"
   }
 }

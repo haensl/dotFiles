@@ -1,3 +1,6 @@
+## 1.2.1
+* Update eslintrc
+
 ## 1.2.0
 * Add package.json to keep track of node modules
 
