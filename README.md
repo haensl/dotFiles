@@ -9,7 +9,7 @@ My dotfile collection.
 [.alias](.alias)
 
 ## ESLint
-[.eslintrc](.eslintrc)
+[.eslintrc.json](.eslintrc.json)
 
 ## fonts
 [.fonts](.fonts)
@@ -23,16 +23,15 @@ My dotfile collection.
 ## icons
 [icons](icons)
 
-## JSCS
-[.jscsrc](.jscsrc)
-
 ## Mutt
 [.mutt](.mutt)
+[.urlview](.urlview)
 
 ## urxvt
 [.Xresources](.Xresources)
 
 ## VIM
 [.vimrc](.vimrc)
+[lightline.vimrc](lightline.vimrc)
 
 ## [CHANGELOG](CHANGELOG.md)
