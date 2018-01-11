@@ -1,0 +1,11 @@
+---
+
+dotfiles:
+  - '.alias'
+  - '.bashrc'
+  - '.eslintrc.json'
+  - '.gitconfig'
+  - '.gitignore'
+  - '.vimrc'
+
+...

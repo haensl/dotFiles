@@ -1,17 +1,17 @@
 ---
 
+- name: 'Make sure dotfiles are absent.'
+  file:
+    path: "{{ ansible_env.HOME }}/{{ item }}"
+    state: absent
+  with_items: "{{ dotfiles }}"
+
 - name: 'Link dotfiles.'
   file:
     src: "{{ playbook_dir }}/{{ item }}"
     dest: "{{ ansible_env.HOME }}/{{ item }}"
     state: link
-  with_items:
-    - '.alias'
-    - '.bashrc'
-    - '.eslintrc.json'
-    - '.gitconfig'
-    - '.gitignore'
-    - '.vimrc'
+  with_items: "{{ dotfiles }}"
 
 - name: 'Link .bash_profile.'
   file:

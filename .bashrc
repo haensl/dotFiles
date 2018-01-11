@@ -15,6 +15,8 @@ readonly LOCAL_BASH_EXTENSIONS=~/.bashrc.local
 readonly ALIAS_FILE=~/.alias
 readonly IS_OSX="$(uname -s | grep Darwin)"
 readonly BASH_COMPLETION_FOLDER=/etc/bash_completion.d/
+HISTCONTROL=ignoreboth
+HISTSIZE=10000
 
 if [ $ON_OSX ]; then
   ulimit -n 10480
