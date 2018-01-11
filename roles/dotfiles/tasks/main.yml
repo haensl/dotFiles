@@ -27,7 +27,7 @@
 - name: 'Ensure local bash profile extensions file exists.'
   file:
     path: "{{ ansible_env.HOME }}/.bashrc.local"
-    state: present
+    state: touch
 
 - name: 'Install nvm.'
   shell: "curl -o- https://raw.githubusercontent.com/creationix/nvm/{{ nvm_latest }}/install.sh | PROFILE=~/.bashrc.local bash"
@@ -41,5 +41,14 @@
   file:
     src: "{{ playbook_dir }}/lightline.vimrc"
     dest: "{{ ansible_env.HOME }}/.vim/lightline.vimrc"
+    state: link
+
+- name: 'Install vundle.'
+  git:
+    repo: 'https://github.com/VundleVim/Vundle.vim.git'
+    dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
+
+- name: 'Install vim plugins.'
+  shell: 'vim +PluginInstall +qall'
 
 ...
