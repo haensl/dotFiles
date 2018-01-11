@@ -1,0 +1,9 @@
+---
+
+- name: 'Development machine setup'
+  hosts: all
+  become: no
+  roles:
+    - dotfiles
+
+...

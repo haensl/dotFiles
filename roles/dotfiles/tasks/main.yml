@@ -1,0 +1,46 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- name: 'Link dotfiles.'
+  file:
+    src: "{{ playbook_dir }}/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/{{ item }}"
+    state: link
+  with_items:
+    - '.alias'
+    - '.bashrc'
+    - '.eslintrc.json'
+    - '.gitconfig'
+    - '.gitignore'
+    - '.vimrc'
+
+- name: 'Link .bash_profile.'
+  file:
+    src: "{{ playbook_dir }}/.bash_profile"
+    dest: "{{ ansible_env.HOME }}/.bash_profile"
+    state: link
+  when: ansible_distribution == 'MacOSX'
+
+- name: 'Retrieve latest version number from nvm.'
+  shell: 'curl -o- https://github.com/creationix/nvm/releases/latest/ | \grep -oP "v\d+\.\d+\.\d+"'
+  register: nvm_latest
+
+- name: 'Ensure local bash profile extensions file exists.'
+  file:
+    path: "{{ ansible_env.HOME }}/.bashrc.local"
+    state: present
+
+- name: 'Install nvm.'
+  shell: "curl -o- https://raw.githubusercontent.com/creationix/nvm/{{ nvm_latest }}/install.sh | PROFILE=~/.bashrc.local bash"
+
+- name: 'Ensure vim configuration folder exists.'
+  file:
+    path: "{{ ansible_env.HOME }}/.vim"
+    state: directory
+
+- name: 'Link lightline config.'
+  file:
+    src: "{{ playbook_dir }}/lightline.vimrc"
+    dest: "{{ ansible_env.HOME }}/.vim/lightline.vimrc"
+
+...
