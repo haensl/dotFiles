@@ -6,5 +6,6 @@
   become: no
   roles:
     - dotfiles
+    - homebrew
 
 ...

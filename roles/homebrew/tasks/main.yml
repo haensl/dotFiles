@@ -1,0 +1,36 @@
+---
+
+- name: 'Install homebrew'
+  shell: '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+  creates: '/usr/local/bin/brew'
+  when: ansible_distribution == 'MacOSX'
+
+- name: 'Install formulae'
+  homebrew:
+    name: "{{ item.name }}"
+    install_options: "{{ item.options }}"
+    state: present
+  with_items: "{{ homebrew_formulae }}"
+  when: ansible_distribution == 'MacOSX'
+
+- name: 'Add coreutils to manpath'
+  lineinfile:
+    line: MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
+    state: present
+    path: "{{ ansible_env.HOME }}/.bashrc.local"
+  when: ansible_distribution == 'MacOSX'
+
+- name: 'Ensure local alias extensions are present'
+  file:
+    path: "{{ ansible_env.HOME }}/.alias.local"
+    state: touch
+  when: ansible_distribution == 'MacOSX'
+
+- name: 'Add brew housekeeping alias'
+  lineinfile:
+    line: 'alias brewup="brew update; brew upgrade; brew prune; brew cleanup; brew doctor"'
+    state: present
+    path: "{{ ansible_env.HOME }}/.alias.local"
+  when: ansible_distribution == 'MacOSX'
+
+...

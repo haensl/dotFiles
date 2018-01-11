@@ -1,37 +1,50 @@
 # dotFiles
 My dotfile collection.
 
-## bash
+## Prerequisites
+
+* git
+* [Ansible](http://docs.ansible.com/ansible/latest/intro_installation.html)
+
+## Installation
+
+`./site.yml -i hosts`
+
+## Reference
+
+### bash
 [.bash_profile](.bash_profile)
 
 [.bashrc](.bashrc)
 
 [.alias](.alias)
 
-## ESLint
+### ESLint
 [.eslintrc.json](.eslintrc.json)
 
-## fonts
+### fonts
 [.fonts](.fonts)
 
-## git
+### git
 [.gitconfig](.gitconfig)
 
-## i3
+### i3
 [i3](i3)
 
-## icons
+### icons
 [icons](icons)
 
-## Mutt
+### Mutt
 [.mutt](.mutt)
 [.urlview](.urlview)
 
-## urxvt
+### urxvt
 [.Xresources](.Xresources)
 
-## VIM
+### VIM
 [.vimrc](.vimrc)
 [lightline.vimrc](lightline.vimrc)
 
 ## [CHANGELOG](CHANGELOG.md)
+
+## [LICENSE](LICENSE)

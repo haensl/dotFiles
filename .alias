@@ -2,7 +2,7 @@
 alias ping="ping -c 3 -v -R"
 
 # Alias ls
-if [ -n "$(uname -s | grep Linux)" ]; then
+if [ -n "$(uname -s | \grep Linux)" ]; then
   alias ls="ls -lah --color"
 else
   alias ls="ls -lahG"
@@ -37,7 +37,7 @@ alias gs="git status"
 
 getGitignore() {
   local ignores
-  if [ -f .gitignore ]; then
+  if [ -f './.gitignore' ]; then
     while read pattern
     do
       if [ -d $pattern ] || [[ "$pattern" == */ ]]; then
@@ -45,7 +45,7 @@ getGitignore() {
       else
         ignores="$ignores --exclude=$pattern"
       fi
-    done < .gitignore
+    done < ./.gitignore
   else
     for pattern in .cvs .git .hg .svn node_modules bower_components; do
       ignores="$ignores --exclude-dir=$pattern"
@@ -58,12 +58,17 @@ getGitignore() {
 # Grep convenience options
 alias grep="grep -R --color $(getGitignore)"
 
-randpw() {
-  echo "$(head /dev/urandom | tr -dc _A-Z-a-z-0-9 | head -c$1)"
+export -f randpw() {
+  local length=${1}
+  if [ -z ${length} ]; then
+    length=16
+  fi
+
+  echo "$(head /dev/urandom | tr -dc _A-Z-a-z-0-9 | head -c${length})"
 }
 
 # Password generator
-alias genpwd="randpw"
+#export -f randpw
 
 # View last few lines from CHANGELOG
 alias version="head -n2 CHANGELOG.md"
