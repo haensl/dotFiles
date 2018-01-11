@@ -51,4 +51,21 @@
 - name: 'Install vim plugins.'
   shell: 'vim +PluginInstall +qall'
 
+- name: 'Discover fonts folder'
+  set_fact:
+    user_fonts_dir: "{{ ansible_env.HOME }}{% if ansible_distribution == 'MacOSX' %}Library/Fonts{% else %}.fonts{% endif %}"
+
+- name: 'Ensure fonts folder exists.'
+  file:
+    path: "{{ user_fonts_dir }}"
+    state: directory
+
+- name: 'Install fonts.'
+  file:
+    src: "{{ playbook_dir }}/.fonts/{{ item }}"
+    dest: "{{ user_fonts_dir }}/{{ item }}"
+    state: link
+  with_fileglob:
+    - "{{ playbook_dir }}/.fonts/*.ttf"
+
 ...
