@@ -3,4 +3,4 @@ localhost ansible_connection=local
 
 [osx]
 
-[i3]
+[archlinux]
