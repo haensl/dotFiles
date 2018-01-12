@@ -34,6 +34,14 @@
   shell: "curl -o- https://raw.githubusercontent.com/creationix/nvm/{{ nvm_latest }}/install.sh | PROFILE=~/.bashrc.local bash"
   creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
 
+- name: 'Configure nvm.'
+  blockinfile:
+    path: "{{ ansible_env.HOME }}/.bashrc.local"
+    block: |
+      export NODE_VERSION=8.9.4
+      source "/usr/share/nvm/init-nvm.sh"
+      nvm use ${NODE_VERSION}
+
 - name: 'Ensure vim configuration folder exists.'
   file:
     path: "{{ ansible_env.HOME }}/.vim"
