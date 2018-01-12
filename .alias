@@ -58,7 +58,7 @@ getGitignore() {
 # Grep convenience options
 alias grep="grep -R --color $(getGitignore)"
 
-export -f randpw() {
+#randpw() {
   local length=${1}
   if [ -z ${length} ]; then
     length=16
@@ -68,7 +68,7 @@ export -f randpw() {
 }
 
 # Password generator
-#export -f randpw
+export -f randpw
 
 # View last few lines from CHANGELOG
 alias version="head -n2 CHANGELOG.md"

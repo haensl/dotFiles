@@ -1,0 +1,26 @@
+---
+
+i3_prerequisites:
+  - 'rxvt-unicode'
+  - 'i3'
+  - 'xorg'
+  - 'xorg-xinit'
+  - 'lxappearance'
+  - 'nitrogen'
+  - 'archlinux-wallpapers'
+  - 'dunst'
+
+i3_aur_dependencies:
+  - 'dmenu2'
+  - 'i3blocks'
+  - 'gtk-theme-bsm-simple'
+
+i3_configfiles:
+  - 'config'
+  - 'i3blocks.conf'
+
+i3_urxvt_configfiles:
+  - '.Xresources'
+  - '.urlview'
+
+...

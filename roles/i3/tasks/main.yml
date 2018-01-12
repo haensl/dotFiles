@@ -1,0 +1,53 @@
+---
+
+- name: 'Install prerequisites'
+  pacman:
+    name: "{{ item }}"
+    state: present
+  update_cache: yes
+  with_items: "{{ i3_prerequisites }}"
+
+- name: 'Add AUR'
+  blockinfile:
+    path: /etc/pacman.conf
+    block: |
+      [archlinuxfr]
+      SigLevel = Never
+      Server = http://repo.archlinux.fr/$arch
+
+- name: 'Install yaourt'
+  pacman:
+    name: 'yaourt'
+    state: present
+  update_cache: yes
+
+- name: 'Install i3 AUR dependencies'
+  shell: "yaourt -S --noconfirm {{ item }}"
+  with_items: "{{ i3_aur_dependencies }}"
+
+- name: 'Ensure configuration directory exists'
+  file:
+    path: "{{ ansible_env.HOME }}/.config"
+    state: directory
+
+- name: 'Link i3 config files'
+  file:
+    src: "i3/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/i3/{{ item }}"
+    state: link
+  with_items: "{{ i3_configfiles }}"
+
+- name: 'Link dunst config'
+  file:
+    src: "dunst/dunstrc"
+    dest: "{{ ansible_env.HOME }}/.config/dunst/dunstrc"
+    state: link
+
+- name: 'Link urxvt config'
+  file:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/{{ item }}"
+    state: link
+  with_items: "{{ i3_urxvt_configfiles }}"
+
+...

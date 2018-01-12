@@ -1,0 +1,13 @@
+---
+
+- name: 'Install base applications'
+  pacman:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items: "{{ base_applications}}"
+
+- name: 'Install dvm'
+  shell: 'curl -sL https://howtowhale.github.io/dvm/downloads/latest/install.sh | sh'
+
+...

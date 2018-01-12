@@ -31,5 +31,7 @@ homebrew_formulae:
   - name: rsync
   - name: unzip
   - name: tree
+  - name: ffmpeg
+  - name: dvm
 
 ...
