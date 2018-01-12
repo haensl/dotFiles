@@ -58,7 +58,7 @@ getGitignore() {
 # Grep convenience options
 alias grep="grep -R --color $(getGitignore)"
 
-#randpw() {
+randpw() {
   local length=${1}
   if [ -z ${length} ]; then
     length=16
