@@ -8,7 +8,8 @@ My dotfile collection.
 
 ## Installation
 
-`./site.yml -i hosts`
+1. Put host in desired group in [`hosts`](hosts)
+2. Run playbook `./site.yml -i hosts`
 
 ## Reference
 
