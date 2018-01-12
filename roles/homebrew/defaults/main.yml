@@ -33,5 +33,7 @@ homebrew_formulae:
   - name: tree
   - name: ffmpeg
   - name: dvm
+  - name: pv
+  - name: telnet
 
 ...

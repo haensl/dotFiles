@@ -19,5 +19,7 @@ base_applications:
   - 'rsync'
   - 'docker'
   - 'vagrant'
+  - 'dnsutils'
+  - 'inetutils'
 
 ...
