@@ -1,3 +1,6 @@
+## 1.4.0
+* Add provisioning.
+
 ## 1.3.0
 * Add `version` shorthand.
 * Add git shorthands for merged branches.
