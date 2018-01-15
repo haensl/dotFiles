@@ -92,7 +92,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 " let g:syntastic_javascript_checkers=['jscs', 'eslint'] " js linters
 Plugin 'Chiel92/vim-autoformat' " autoformatting
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy file search
-Plugin 'helino/vim-json' " enhanced JSON support
+Plugin 'elzr/vim-json' " enhanced JSON support
 Plugin 'ap/vim-css-color' " Preview colors in source code
 Plugin 'suan/vim-instant-markdown' " Preview markdown in the browser
 Plugin 'JulesWang/css.vim' " CSS syntax rules
@@ -164,7 +164,7 @@ if &t_Co > 2 || has("gui_running")
   syntax on " enable syntax highlighting
   set hlsearch " highlight search results
   set background=dark
-  colorscheme solarized
+  silent! colorscheme solarized
   syntax sync minlines=256
 endif
 

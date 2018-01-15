@@ -31,7 +31,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvt 
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -61,12 +61,6 @@ bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
 # split in horizontal orientation
 bindsym $mod+Shift+h split h
 
@@ -89,15 +83,6 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
-# workspace names
-rename workspace 1 to "1: "
-rename workspace 2 to "2: "
-rename workspace 3 to "3: "
-rename workspace 4 to "4: "
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -156,12 +141,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $bg-color			#3f3f3f
-set $focus-color		#1793d1
-set $inactive-bg-color		#222222
-set $text-color			#dcdcdc
-set $inactive-text-color	#888888
-set $urgent-bg-color		#1793d1
+set $bg-color #3f3f3f
+set $focus-color #1793d1
+set $inactive-bg-color #222222
+set $text-color #dcdcdc
+set $inactive-text-color #888888
+set $urgent-bg-color #1793d1
 
 # window colors
 #			border		background		text			indicator
@@ -186,16 +171,23 @@ bar {
 	}
 }
 
-bindsym XF86AudioLowerVolume exec amixer sset Master 3-
-bindsym XF86AudioRaiseVolume exec amixer sset Master 3+
+bindsym XF86AudioLowerVolume exec amixer sset Master 10%-
+bindsym XF86AudioRaiseVolume exec amixer sset Master 10%+
 bindsym XF86AudioMute exec amixer sset Master toggle
+#
 # Lock screen shortcut
 bindsym $mod+Shift+x exec i3lock -e -i '/usr/share/archlinux/wallpaper/archlinux-simplyblack.png'
 
-exec VBoxClient-all &
+# Autolock screen after 5 minutes
+exec xautolock -time 5 -locker "i3block -e -t -i '/usr/share/archlinux/wallpaper/archlinux-simplyblack.png'"
+
+# exec VBoxClient-all &
 
 # load urxvt config
 exec xrdb -merge ~/.Xresources
 
 # restore wallpaper
 exec nitrogen --restore &
+
+# start notification server
+exec --no-startup-id dunst

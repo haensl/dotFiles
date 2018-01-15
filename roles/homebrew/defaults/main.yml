@@ -1,0 +1,39 @@
+---
+
+homebrew_formulae:
+  - name: coreutils
+  - name: binutils
+  - name: diffutils
+  - name: findutils
+    options: --with-default-names
+  - name: gawk
+  - name: gnu-sed
+    options: --with-default-names
+  - name: gnu-tar
+    options: --with-default-names
+  - name: gnu-which
+    options: --with-default-names
+  - name: gnutls
+  - name: gzip
+  - name: screen
+  - name: watch
+  - name: wget
+  - name: bash
+  - name: less
+  - name: make
+  - name: vim
+    options: --override-system-vi
+  - name: macvim
+    options: --override-system-vi
+  - name: openssh
+  - name: perl
+  - name: python
+  - name: rsync
+  - name: unzip
+  - name: tree
+  - name: ffmpeg
+  - name: dvm
+  - name: pv
+  - name: telnet
+
+...

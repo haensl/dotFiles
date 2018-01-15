@@ -1,0 +1,81 @@
+---
+
+- name: 'Make sure dotfiles are absent.'
+  file:
+    path: "{{ ansible_env.HOME }}/{{ item }}"
+    state: absent
+  with_items: "{{ dotfiles }}"
+
+- name: 'Link dotfiles.'
+  file:
+    src: "{{ playbook_dir }}/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/{{ item }}"
+    state: link
+  with_items: "{{ dotfiles }}"
+
+- name: 'Link .bash_profile.'
+  file:
+    src: "{{ playbook_dir }}/.bash_profile"
+    dest: "{{ ansible_env.HOME }}/.bash_profile"
+    state: link
+  when: ansible_distribution == 'MacOSX'
+
+- name: 'Retrieve latest version number from nvm.'
+  shell: 'curl -o- https://github.com/creationix/nvm/releases/latest/ | \grep -oP "v\d+\.\d+\.\d+"'
+  register: nvm_latest
+  creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+- name: 'Ensure local bash profile extensions file exists.'
+  file:
+    path: "{{ ansible_env.HOME }}/.bashrc.local"
+    state: touch
+
+- name: 'Install nvm.'
+  shell: "curl -o- https://raw.githubusercontent.com/creationix/nvm/{{ nvm_latest }}/install.sh | PROFILE=~/.bashrc.local bash"
+  creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+- name: 'Configure nvm.'
+  blockinfile:
+    path: "{{ ansible_env.HOME }}/.bashrc.local"
+    block: |
+      export NODE_VERSION=8.9.4
+      source "/usr/share/nvm/init-nvm.sh"
+      nvm use ${NODE_VERSION}
+
+- name: 'Ensure vim configuration folder exists.'
+  file:
+    path: "{{ ansible_env.HOME }}/.vim"
+    state: directory
+
+- name: 'Link lightline config.'
+  file:
+    src: "{{ playbook_dir }}/lightline.vimrc"
+    dest: "{{ ansible_env.HOME }}/.vim/lightline.vimrc"
+    state: link
+
+- name: 'Install vundle.'
+  git:
+    repo: 'https://github.com/VundleVim/Vundle.vim.git'
+    dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
+
+- name: 'Install vim plugins.'
+  shell: 'vim +PluginInstall +qalls'
+
+- name: 'Discover fonts folder'
+  set_fact:
+    user_fonts_dir: "{{ ansible_env.HOME }}/{% if ansible_distribution == 'MacOSX' %}Library/Fonts{% else %}.fonts{% endif %}"
+
+- name: 'Ensure fonts folder exists.'
+  file:
+    path: "{{ user_fonts_dir }}"
+    state: directory
+
+- name: 'Install fonts.'
+  file:
+    src: "{{ playbook_dir }}/.fonts/{{ item }}"
+    dest: "{{ user_fonts_dir }}/{{ item }}"
+    state: link
+  with_fileglob:
+    - "{{ playbook_dir }}/.fonts/*.ttf"
+
+...

@@ -15,6 +15,8 @@ readonly LOCAL_BASH_EXTENSIONS=~/.bashrc.local
 readonly ALIAS_FILE=~/.alias
 readonly IS_OSX="$(uname -s | grep Darwin)"
 readonly BASH_COMPLETION_FOLDER=/etc/bash_completion.d/
+HISTCONTROL=ignoreboth
+HISTSIZE=10000
 
 if [ $ON_OSX ]; then
   ulimit -n 10480
@@ -69,3 +71,7 @@ test -s $LOCAL_BASH_EXTENSTIONS && . $LOCAL_BASH_EXTENSIONS || true
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

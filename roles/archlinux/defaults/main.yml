@@ -1,0 +1,25 @@
+---
+
+base_applications:
+  - 'git'
+  - 'gvim'
+  - 'rxvt-unicode'
+  - 'openssh'
+  - 'ranger'
+  - 'zip'
+  - 'unzip'
+  - 'arandr'
+  - 'gimp'
+  - 'inkscape'
+  - 'gpicview'
+  - 'zathura'
+  - 'cmus'
+  - 'smplayer'
+  - 'wget'
+  - 'rsync'
+  - 'docker'
+  - 'vagrant'
+  - 'dnsutils'
+  - 'inetutils'
+
+...
