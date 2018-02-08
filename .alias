@@ -35,6 +35,8 @@ alias sha1="shasum -a 1"
 alias g="git"
 alias gs="git status"
 
+alias tree="tree -CFh --du"
+
 getGitignore() {
   local ignores
   if [ -f './.gitignore' ]; then

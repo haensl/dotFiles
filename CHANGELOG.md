@@ -1,3 +1,6 @@
+## 1.5.0
+* Add alias for `tree`
+
 ## 1.4.0
 * Add provisioning.
 
