@@ -21,7 +21,7 @@
   when: ansible_distribution == 'MacOSX'
 
 - name: 'Retrieve latest version number from nvm.'
-  shell: 'curl -o- https://github.com/creationix/nvm/releases/latest/ | \grep -oP "v\d+\.\d+\.\d+"'
+  shell: 'curl -o- https://github.com/creationix/nvm/releases/latest/ | \grep -o "v\d\+\.\d\+\.\d\+"'
   register: nvm_latest
   creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
 
@@ -72,8 +72,8 @@
 
 - name: 'Install fonts.'
   file:
-    src: "{{ playbook_dir }}/.fonts/{{ item }}"
-    dest: "{{ user_fonts_dir }}/{{ item }}"
+    src: "{{ item }}"
+    dest: "{{ user_fonts_dir }}/{{ item | basename }}"
     state: link
   with_fileglob:
     - "{{ playbook_dir }}/.fonts/*.ttf"

@@ -1,6 +1,6 @@
 localhost ansible_connection=local
 
 [osx]
+localhost
 
 [archlinux]
-localhost

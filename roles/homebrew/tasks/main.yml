@@ -8,7 +8,7 @@
 - name: 'Install formulae'
   homebrew:
     name: "{{ item.name }}"
-    install_options: "{{ item.options }}"
+    install_options: "{{ item.options | default(None) }}"
     state: present
   with_items: "{{ homebrew_formulae }}"
   when: ansible_distribution == 'MacOSX'

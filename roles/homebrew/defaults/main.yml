@@ -13,6 +13,7 @@ homebrew_formulae:
     options: --with-default-names
   - name: gnu-which
     options: --with-default-names
+  - name: iproute2mac
   - name: gnutls
   - name: gzip
   - name: screen

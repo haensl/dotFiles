@@ -3,6 +3,8 @@ export CLICOLOR=1
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 export PAGER=/usr/bin/less
+export LC_CTYPE=C
+export LC_ALL=de_DE.UTF-8
 
 set -o vi
 set show-mode-in-prompt on
@@ -18,7 +20,7 @@ readonly BASH_COMPLETION_FOLDER=/etc/bash_completion.d/
 HISTCONTROL=ignoreboth
 HISTSIZE=10000
 
-if [ $ON_OSX ]; then
+if [ $IS_OSX ]; then
   ulimit -n 10480
 fi
 
@@ -57,7 +59,7 @@ function branch {
   fi
 }
 
-export PS1="${ORANGE}\u@\h ${BLUE}\$(dirByDir 3)${NO_COLOR} ${GREEN}\$(branch)${NO_COLOR}\n${BLUE}∞${NO_COLOR} "
+export PS1="${ORANGE}\u@\h ${BLUE}\$(dirByDir 3)${GREEN} \$(branch)\n${BLUE}∞${NO_COLOR} "
 
 if [ -d ${BASH_COMPLETION_FOLDER} ]; then
   for i in $(ls ${BASH_COMPLETION_FOLDER});

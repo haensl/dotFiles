@@ -1,3 +1,9 @@
+## 1.5.1
+* Add locale to bashrc.
+* Fix variable name in bashrc.
+* Fix fonts task.
+* Update brews.
+
 ## 1.5.0
 * Add alias for `tree`
 
