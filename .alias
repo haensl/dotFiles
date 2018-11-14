@@ -34,6 +34,7 @@ alias sha1="shasum -a 1"
 # Alias git
 alias g="git"
 alias gs="git status"
+alias gclean="git branch --merged | egrep -v \"(^\*|master)\" | xargs git branch -d"
 
 alias tree="tree -CFh --du"
 
@@ -71,6 +72,20 @@ randpw() {
 
 # Password generator
 export -f randpw
+
+hashstr() {
+  local bytes=${1}
+  local format=${2:-hex}
+
+  case ${format} in
+    hex)
+      hashlen=$((${bytes} + ${bytes}))
+      echo "$(head /dev/urandom | tr -dc a-f0-9 | head -c${hashlen})"
+      ;;
+  esac
+}
+
+export -f hashstr
 
 # View last few lines from CHANGELOG
 alias version="head -n2 CHANGELOG.md"

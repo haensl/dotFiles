@@ -4,7 +4,7 @@ export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 export PAGER=/usr/bin/less
 export LC_CTYPE=C
-export LC_ALL=de_DE.UTF-8
+export LC_ALL=C
 
 set -o vi
 set show-mode-in-prompt on
@@ -12,6 +12,7 @@ set show-mode-in-prompt on
 readonly ORANGE='\[\033[0;33m\]'
 readonly BLUE='\[\033[0;34m\]'
 readonly GREEN='\[\033[0;32m\]'
+readonly LIGHT_GRAY='\[\033[0;37m\]'
 readonly NO_COLOR='\[\033[0m\]'
 readonly LOCAL_BASH_EXTENSIONS=~/.bashrc.local
 readonly ALIAS_FILE=~/.alias
@@ -54,12 +55,10 @@ function dirByDir {
 }
 
 function branch {
-  if [ -d $(pwd)/.git ]; then
+  if [ -d $(pwd)/.git ] && [ -e "$(pwd)/.git/refs/heads/master" ]; then
     echo " $(git rev-parse --abbrev-ref HEAD)"
   fi
 }
-
-export PS1="${ORANGE}\u@\h ${BLUE}\$(dirByDir 3)${GREEN} \$(branch)\n${BLUE}∞${NO_COLOR} "
 
 if [ -d ${BASH_COMPLETION_FOLDER} ]; then
   for i in $(ls ${BASH_COMPLETION_FOLDER});
@@ -68,12 +67,12 @@ if [ -d ${BASH_COMPLETION_FOLDER} ]; then
   done
 fi
 
-test -s $ALIAS_FILE && . $ALIAS_FILE || true
-test -s $LOCAL_BASH_EXTENSTIONS && . $LOCAL_BASH_EXTENSIONS || true
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+test -s $ALIAS_FILE && . $ALIAS_FILE || true
+test -s $LOCAL_BASH_EXTENSIONS && . $LOCAL_BASH_EXTENSIONS || true

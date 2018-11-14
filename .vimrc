@@ -49,7 +49,6 @@ set splitright " vsplit new window to right
 set splitbelow " hsplit new window to bottom
 set wildmenu " use completion menu
 set wildignore=*~,*.o,*.so,*.obj,*.out " ignore these extensions in search list
-set wildignore+=bower_components/* " exclude bower_components folder from search list
 set wildignore+=node_modules/* " exclude node_modules folder from search list
 set wildignore+=dist/* " exclude dist folder from search list
 set wildignore+=tmp/* " exclude tmp folder from search list
@@ -67,6 +66,8 @@ set foldmethod=indent " code folding by indentation
 set foldnestmax=2 " maximum nesting level for folding
 set foldlevel=1 " foldlevel for first line of fold
 set guifont=Hack:h18
+set conceallevel=0
+set autoread
 syntax sync minlines=256
 let mapleader = ','
 
@@ -80,6 +81,7 @@ Plugin 'mxw/vim-jsx' " enable JSX support
 Plugin 'jelera/vim-javascript-syntax' " javascript syntax rules
 Plugin 'Yggdroot/indentLine' " indentation guides
 let g:indentLine_leadingSpaceEnabled=1 " show leading spaces
+let g:indentLine_conceallevel=0 " do not change my conceallevel bro
 Plugin 'Raimondi/delimitMate' " auto close brackets and quotes
 let delimitMate_expand_cr=1 " autoexpand carriage return
 let g:syntastic_check_on_open=1 " check syntax when opening a file
@@ -92,7 +94,9 @@ let g:syntastic_javascript_checkers = ['eslint']
 " let g:syntastic_javascript_checkers=['jscs', 'eslint'] " js linters
 Plugin 'Chiel92/vim-autoformat' " autoformatting
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy file search
+let g:ctrlp_custom_ignore='node_modules\|DS_Store\|git'
 Plugin 'elzr/vim-json' " enhanced JSON support
+let g:vim_json_syntax_conceal=0 " do not conceal json by default
 Plugin 'ap/vim-css-color' " Preview colors in source code
 Plugin 'suan/vim-instant-markdown' " Preview markdown in the browser
 Plugin 'JulesWang/css.vim' " CSS syntax rules
@@ -210,4 +214,3 @@ if !exists(":DiffOrig")
         \ | wincmd p | diffthis
 endif
 source $HOME/.vim/lightline.vimrc " include lightline config
-set conceallevel=0
