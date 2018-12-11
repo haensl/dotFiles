@@ -2,6 +2,7 @@
 
 homebrew_formulae:
   - name: coreutils
+    options: --with-default-names
   - name: binutils
   - name: diffutils
   - name: findutils
@@ -20,6 +21,7 @@ homebrew_formulae:
   - name: watch
   - name: wget
   - name: bash
+  - name: bash-completion
   - name: less
   - name: make
   - name: vim
@@ -29,6 +31,7 @@ homebrew_formulae:
   - name: openssh
   - name: perl
   - name: python
+  - name: python@2
   - name: rsync
   - name: unzip
   - name: tree
@@ -36,5 +39,9 @@ homebrew_formulae:
   - name: dvm
   - name: pv
   - name: telnet
+  - name: freetype
+  - name: imagemagick
+  - name: lame
+  - name: openssl
 
 ...

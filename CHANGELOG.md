@@ -1,3 +1,6 @@
+## 1.5.3
+* Add brew formulae: bash-completion, python@2, freetype, imagemagick, openssl.
+
 ## 1.5.2
 * Skip comments in gitignores function.
 
