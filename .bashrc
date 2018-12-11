@@ -34,7 +34,7 @@ function dirByDir {
   local continuation='…'
   local ppd="${PWD}"
   local i=0
-  
+
   while [ "${ppd}" != '' ]
   do
     ppd="${ppd%/*}"

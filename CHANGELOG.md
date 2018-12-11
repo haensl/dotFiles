@@ -1,3 +1,6 @@
+## 1.5.2
+* Skip comments in gitignores function.
+
 ## 1.5.1
 * Add locale to bashrc.
 * Fix variable name in bashrc.

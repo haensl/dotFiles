@@ -38,11 +38,16 @@ alias gclean="git branch --merged | egrep -v \"(^\*|master)\" | xargs git branch
 
 alias tree="tree -CFh --du"
 
-getGitignore() {
+getgitignore() {
   local ignores
   if [ -f './.gitignore' ]; then
     while read pattern
     do
+      # skip comments
+      if [ "${pattern:0:1}" = \# ]; then
+        continue
+      fi
+
       if [ -d $pattern ] || [[ "$pattern" == */ ]]; then
         ignores="$ignores --exclude-dir=$pattern"
       else
@@ -58,8 +63,10 @@ getGitignore() {
   echo $ignores
 }
 
+echo $(getgitignore)
+
 # Grep convenience options
-alias grep="grep -R --color $(getGitignore)"
+alias grep="grep -R --color $(getgitignore)"
 
 randpw() {
   local length=${1}
