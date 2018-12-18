@@ -63,8 +63,6 @@ getgitignore() {
   echo $ignores
 }
 
-echo $(getgitignore)
-
 # Grep convenience options
 alias grep="grep -R --color $(getgitignore)"
 
