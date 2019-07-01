@@ -1,3 +1,6 @@
+## 1.5.1
+* [#5: Fix ArchLinux provisioning.](https://github.com/haensl/dotFiles/issues/5)
+
 ## 1.5.0
 * Add alias for `tree`
 

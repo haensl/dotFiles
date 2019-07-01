@@ -21,9 +21,10 @@
   when: ansible_distribution == 'MacOSX'
 
 - name: 'Retrieve latest version number from nvm.'
-  shell: 'curl -o- https://github.com/creationix/nvm/releases/latest/ | \grep -oP "v\d+\.\d+\.\d+"'
+  shell: 'curl -o- https://github.com/nvm-sh/nvm/releases/latest/ | \grep -oP "v\d+\.\d+\.\d+"'
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
   register: nvm_latest
-  creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
 
 - name: 'Ensure local bash profile extensions file exists.'
   file:
@@ -31,16 +32,16 @@
     state: touch
 
 - name: 'Install nvm.'
-  shell: "curl -o- https://raw.githubusercontent.com/creationix/nvm/{{ nvm_latest }}/install.sh | PROFILE=~/.bashrc.local bash"
-  creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+  shell: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{{ nvm_latest }}/install.sh | PROFILE=~/.bashrc.local bash"
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
 
 - name: 'Configure nvm.'
   blockinfile:
     path: "{{ ansible_env.HOME }}/.bashrc.local"
     block: |
-      export NODE_VERSION=8.9.4
       source "/usr/share/nvm/init-nvm.sh"
-      nvm use ${NODE_VERSION}
+      nvm use lts/*
 
 - name: 'Ensure vim configuration folder exists.'
   file:
@@ -58,8 +59,14 @@
     repo: 'https://github.com/VundleVim/Vundle.vim.git'
     dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
 
+- name: 'Check if vim is installed'
+  shell: command -v vim >/dev/null 2>&1
+  register: vim_exists
+  ignore_errors: yes
+
 - name: 'Install vim plugins.'
   shell: 'vim +PluginInstall +qalls'
+  when: vim_exists['rc'] == 0
 
 - name: 'Discover fonts folder'
   set_fact:
@@ -72,8 +79,8 @@
 
 - name: 'Install fonts.'
   file:
-    src: "{{ playbook_dir }}/.fonts/{{ item }}"
-    dest: "{{ user_fonts_dir }}/{{ item }}"
+    src: "{{ playbook_dir }}/.fonts/{{ item | basename }}"
+    dest: "{{ user_fonts_dir }}/{{ item | basename }}"
     state: link
   with_fileglob:
     - "{{ playbook_dir }}/.fonts/*.ttf"

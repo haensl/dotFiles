@@ -34,6 +34,7 @@ alias sha1="shasum -a 1"
 # Alias git
 alias g="git"
 alias gs="git status"
+alias gclean="git branch --merged | egrep -v \"(^\*|master)\" | xargs git branch -d"
 
 alias tree="tree -CFh --du"
 

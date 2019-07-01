@@ -2,7 +2,8 @@
 
 - name: 'Install homebrew'
   shell: '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
-  creates: '/usr/local/bin/brew'
+  args:
+    creates: '/usr/local/bin/brew'
   when: ansible_distribution == 'MacOSX'
 
 - name: 'Install formulae'
