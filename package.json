@@ -22,7 +22,7 @@
   "homepage": "https://github.com/haensl/dotFiles#readme",
   "preferGlobal": true,
   "dependencies": {
-    "eslint": "^3.11.1",
+    "eslint": "^6.6.0",
     "instant-markdown-d": "~0.1.0"
   }
 }
