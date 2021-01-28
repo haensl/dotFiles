@@ -66,7 +66,10 @@ set foldmethod=indent " code folding by indentation
 set foldnestmax=2 " maximum nesting level for folding
 set foldlevel=1 " foldlevel for first line of fold
 set guifont=Hack:h18
+<<<<<<< HEAD
 set conceallevel=0
+=======
+>>>>>>> 119d719ef9ab6316a762cf48ce09496d5272b4c6
 set autoread
 syntax sync minlines=256
 let mapleader = ','
@@ -100,6 +103,7 @@ Plugin 'elzr/vim-json' " enhanced JSON support
 let g:vim_json_syntax_conceal=0 " do not conceal json by default
 Plugin 'ap/vim-css-color' " Preview colors in source code
 Plugin 'suan/vim-instant-markdown' " Preview markdown in the browser
+let g:instant_markdown_conceal = 0 "disable concealing of Markdown files
 Plugin 'JulesWang/css.vim' " CSS syntax rules
 Plugin 'dkprice/vim-easygrep' " grep extension
 let g:EasyGrepFilesToExclude='bower_components,node_modules,.git,.tmp,packages' " files to exclude from grep
@@ -124,6 +128,8 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'tpope/vim-fugitive' " extended git support
 Plugin 'tpope/vim-surround' " surrounding text
 Plugin 'LaTeX-Suite-aka-Vim-LaTeX' " Latex support
+Plugin 'posva/vim-vue'
+let g:vue_disable_pre_processors=1 " this slows down vim quite a lot
 
 " Color schemes
 Plugin 'jwhitley/vim-colors-solarized'

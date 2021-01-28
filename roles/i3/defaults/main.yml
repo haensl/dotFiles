@@ -1,13 +1,13 @@
 ---
 
 i3_prerequisites:
+  - 'base-devel'
   - 'rxvt-unicode'
   - 'i3'
   - 'xorg'
   - 'xorg-xinit'
   - 'lxappearance'
   - 'nitrogen'
-  - 'archlinux-wallpapers'
   - 'dunst'
 
 i3_aur_dependencies:

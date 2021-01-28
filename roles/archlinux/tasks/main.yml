@@ -2,12 +2,13 @@
 
 - name: 'Install base applications.'
   pacman:
-    name: "{{ item }}"
+    name: "{{ base_applications }}"
     state: present
   become: yes
-  with_items: "{{ base_applications}}"
+  when: ansible_facts['os_family'] == 'Archlinux'
 
 - name: 'Install dvm.'
   shell: 'curl -sL https://howtowhale.github.io/dvm/downloads/latest/install.sh | sh'
+  when: ansible_facts['os_family'] == 'Archlinux'
 
 ...
