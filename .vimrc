@@ -74,6 +74,7 @@ let mapleader = ','
 " Plugins
 silent! call vundle#begin()
 " Extensions
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/syntastic' " advanced syntax highlighting and linting
 Plugin 'pangloss/vim-javascript' " extended javascript support
 let javascript_enable_domhtmlcss=1 " enable HTML/CSS syntax highlighting
@@ -122,6 +123,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin' " add git support to nerdtree
 Plugin 'itchyny/lightline.vim'
 Plugin 'tpope/vim-fugitive' " extended git support
 Plugin 'tpope/vim-surround' " surrounding text
+Plugin 'LaTeX-Suite-aka-Vim-LaTeX' " Latex support
 
 " Color schemes
 Plugin 'jwhitley/vim-colors-solarized'

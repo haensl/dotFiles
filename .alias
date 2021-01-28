@@ -2,7 +2,7 @@
 alias ping="ping -c 3 -v -R"
 
 # Alias ls
-if [ -n "$(uname -s | \grep Linux)" ]; then
+if [ -n "$(uname -s | \grep Linux)" ] || grep -q gnubin <<<$(which ls); then
   alias ls="ls -lah --color"
 else
   alias ls="ls -lahG"

@@ -4,7 +4,8 @@
   pacman:
     name: "{{ item }}"
     state: present
-  update_cache: yes
+  args:
+    update_cache: yes
   with_items: "{{ i3_prerequisites }}"
 
 - name: 'Add AUR'
@@ -19,7 +20,8 @@
   pacman:
     name: 'yaourt'
     state: present
-  update_cache: yes
+  args:
+    update_cache: yes
 
 - name: 'Install i3 AUR dependencies'
   shell: "yaourt -S --noconfirm {{ item }}"
