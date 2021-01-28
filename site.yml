@@ -1,23 +1,22 @@
 #!/usr/bin/env ansible-playbook
 ---
 
-- name: 'Development machine dotfile setup'
-  hosts: all
-  become: no
-  roles:
-    - dotfiles
-
 - name: 'OSX specific setup'
-  hosts: osx
+  hosts: localhost
   become: no
   roles:
     - homebrew
 
 - name: 'ArchLinux specific setup'
-  hosts: archlinux
-  become: yes
+  hosts: localhost
   roles:
-    - archlinux
+    - { role: archlinux, become: yes }
     - i3
+
+- name: 'Development machine dotfile setup'
+  hosts: localhost
+  become: no
+  roles:
+    - dotfiles
 
 ...

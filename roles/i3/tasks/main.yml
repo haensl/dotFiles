@@ -1,10 +1,12 @@
 ---
 
-- name: 'Install prerequisites'
+- name: 'Install prerequisites.'
+  become: yes
   pacman:
-    name: "{{ item }}"
+    name: "{{ i3_prerequisites }}"
     state: present
-  update_cache: yes
+  args:
+    update_cache: yes
   with_items: "{{ i3_prerequisites }}"
 
 - name: 'Add AUR'
@@ -19,35 +21,76 @@
   pacman:
     name: 'yaourt'
     state: present
-  update_cache: yes
+  args:
+    update_cache: yes
+  when: ansible_facts['os_family'] == 'Archlinux'
 
-- name: 'Install i3 AUR dependencies'
-  shell: "yaourt -S --noconfirm {{ item }}"
+- name: 'Ensure archlinux directory exists.'
+  file:
+    path: '/usr/share/archlinux'
+    state: directory
+  when: ansible_facts['os_family'] == 'Archlinux'
+
+- name: 'Link wallpaper.'
+  file:
+    src: '{{ playbook_dir }}/wallpaper'
+    dest: '/usr/share/archlinux/wallpaper'
+    state: link
+  when: ansible_facts['os_family'] == 'Archlinux'
+
+- name: 'Clone i3 AUR dependencies'
+  git:
+    repo: "https://aur.archlinux.org/{{ item }}.git"
+    dest: "/opt/aur/{{ item }}"
   with_items: "{{ i3_aur_dependencies }}"
+  when: ansible_facts['os_family'] == 'Archlinux'
+
+- name: 'Install i3 AUR dependencies.'
+  shell: 'makepkg -sirc'
+  args:
+    chdir: "/opt/aur/{{ item }}"
+    creates: "/opt/aur/{{ item }}.pkg.tar.xz"
+  with_items: "{{ i3_aur_dependencies }}"
+  when: ansible_facts['os_family'] == 'Archlinux'
 
 - name: 'Ensure configuration directory exists'
   file:
     path: "{{ ansible_env.HOME }}/.config"
     state: directory
+  when: ansible_facts['os_family'] == 'Archlinux'
+
+- name: 'Ensure i3 config directory exists'
+  file:
+    path: "{{ ansible_env.HOME }}/.config/i3"
+    state: directory
+  when: ansible_facts['os_family'] == 'Archlinux'
 
 - name: 'Link i3 config files'
   file:
-    src: "i3/{{ item }}"
+    src: "{{ playbook_dir }}/i3/{{ item }}"
     dest: "{{ ansible_env.HOME }}/.config/i3/{{ item }}"
     state: link
   with_items: "{{ i3_configfiles }}"
+  when: ansible_facts['os_family'] == 'Archlinux'
+
+- name: 'Ensure dunst config directory exists'
+  file:
+    path: "{{ ansible_env.HOME }}/.config/dunst"
+    state: directory
 
 - name: 'Link dunst config'
   file:
-    src: "dunst/dunstrc"
+    src: "{{ playbook_dir }}/dunst/dunstrc"
     dest: "{{ ansible_env.HOME }}/.config/dunst/dunstrc"
     state: link
+  when: ansible_facts['os_family'] == 'Archlinux'
 
 - name: 'Link urxvt config'
   file:
-    src: "{{ item }}"
+    src: "{{ playbook_dir }}/{{ item }}"
     dest: "{{ ansible_env.HOME }}/{{ item }}"
     state: link
   with_items: "{{ i3_urxvt_configfiles }}"
+  when: ansible_facts['os_family'] == 'Archlinux'
 
 ...

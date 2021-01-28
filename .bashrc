@@ -60,6 +60,7 @@ function branch {
   fi
 }
 
+export PS1="${ORANGE}\u@\h ${BLUE}\$(dirByDir 3)${NO_COLOR} ${GREEN}\$(branch)${NO_COLOR}\n${BLUE}∞${NO_COLOR} "
 if [ -d ${BASH_COMPLETION_FOLDER} ]; then
   for i in $(ls ${BASH_COMPLETION_FOLDER});
   do
@@ -69,10 +70,6 @@ fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 test -s $ALIAS_FILE && . $ALIAS_FILE || true
 test -s $LOCAL_BASH_EXTENSIONS && . $LOCAL_BASH_EXTENSIONS || true

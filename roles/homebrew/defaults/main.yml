@@ -2,18 +2,13 @@
 
 homebrew_formulae:
   - name: coreutils
-    options: --with-default-names
   - name: binutils
   - name: diffutils
   - name: findutils
-    options: --with-default-names
   - name: gawk
   - name: gnu-sed
-    options: --with-default-names
   - name: gnu-tar
-    options: --with-default-names
   - name: gnu-which
-    options: --with-default-names
   - name: iproute2mac
   - name: gnutls
   - name: gzip
@@ -25,9 +20,9 @@ homebrew_formulae:
   - name: less
   - name: make
   - name: vim
-    options: --override-system-vi
+    options: --with-override-system-vi
   - name: macvim
-    options: --override-system-vi
+    options: --with-override-system-vi
   - name: openssh
   - name: perl
   - name: python

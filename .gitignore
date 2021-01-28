@@ -1,2 +1,3 @@
 node_modules/
 site.retry
+.DS_Store

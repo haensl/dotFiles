@@ -1,6 +1,6 @@
 {
   "name": "dotfiles",
-  "version": "1.2.1",
+  "version": "1.5.5",
   "description": "HP's dotfile collection.",
   "main": "README.md",
   "scripts": {},
@@ -22,7 +22,7 @@
   "homepage": "https://github.com/haensl/dotFiles#readme",
   "preferGlobal": true,
   "dependencies": {
-    "eslint": "^6.6.0",
-    "instant-markdown-d": "~0.1.0"
+    "eslint": "^7.18.0",
+    "instant-markdown-d": "^0.2.0-rc.2"
   }
 }

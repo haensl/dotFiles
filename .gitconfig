@@ -1,7 +1,7 @@
 #HP's .gitconfig
 [user]
   name = HP Dietz
-  email = hp@jandh.org
+  email = h.p.dietz@gmail.com
 
 [push]
   default = simple

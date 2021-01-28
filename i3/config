@@ -176,10 +176,10 @@ bindsym XF86AudioRaiseVolume exec amixer sset Master 10%+
 bindsym XF86AudioMute exec amixer sset Master toggle
 #
 # Lock screen shortcut
-bindsym $mod+Shift+x exec i3lock -e -i '/usr/share/archlinux/wallpaper/archlinux-simplyblack.png'
+bindsym $mod+Shift+x exec i3lock -e -i '/usr/share/archlinux/wallpaper/archlinux-black-a.png'
 
 # Autolock screen after 5 minutes
-exec xautolock -time 5 -locker "i3block -e -t -i '/usr/share/archlinux/wallpaper/archlinux-simplyblack.png'"
+exec xautolock -time 5 -locker "i3block -e -t -i '/usr/share/archlinux/wallpaper/archlinux-black-a.png'"
 
 # exec VBoxClient-all &
 
